@@ -17,8 +17,6 @@ namespace ASP.NET_Core___Intermediate__MVA_.API
         public TicketController(ApplicationDbContext context)
         {
             _context = context;
-           
-
         }
 
         [HttpGet]

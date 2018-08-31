@@ -13,6 +13,7 @@ using ASP.NET_Core___Intermediate__MVA_.Data;
 using ASP.NET_Core___Intermediate__MVA_.Services;
 using System.Security.Claims;
 using Microsoft.Extensions.Logging;
+using Swashbuckle.AspNetCore.Swagger;
 
 namespace ASP.NET_Core___Intermediate__MVA_
 {
@@ -37,7 +38,10 @@ namespace ASP.NET_Core___Intermediate__MVA_
                 .AddDefaultTokenProviders();
 
 
-
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new Info { Title = "Concert API", Version = "v1" });
+            });
 
             services.AddAuthorization(configure => 
             {
@@ -69,6 +73,7 @@ namespace ASP.NET_Core___Intermediate__MVA_
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
+
             if (env.IsDevelopment())
             {
                 app.UseBrowserLink();
@@ -79,6 +84,13 @@ namespace ASP.NET_Core___Intermediate__MVA_
             {
                 app.UseExceptionHandler("/Error");
             }
+            app.UseSwagger();
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Ticket API V1");
+            });
+
+
 
             app.UseStaticFiles();
 
