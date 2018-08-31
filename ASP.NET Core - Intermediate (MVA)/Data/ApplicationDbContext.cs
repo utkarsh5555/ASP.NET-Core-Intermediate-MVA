@@ -13,7 +13,7 @@ namespace ASP.NET_Core___Intermediate__MVA_.Data
             : base(options)
         {
         }
-
+        public DbSet<TicketItem> TicketItems { get; set; }
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
