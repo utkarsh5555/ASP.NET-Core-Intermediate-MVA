@@ -4,6 +4,18 @@
 @{
     ViewData["Title"] = "Home page";
 }
-<repeat count="5">
-    <h1>This is my machine name : @Configuration["MyTwitterKey"]</h1>
-</repeat>
+<div class="row">
+    <h3>Costume Tag Helper</h3>
+    <repeat count="3">
+        <h5 class="col-md-4">This is my machine name : @Configuration["MyTwitterKey"]</h5>
+    </repeat>   
+</div>
+<hr />
+<div class="row">
+    <h3>API & Swagger </h3>
+    <div class="btn-group-lg">
+        <a class="btn btn-success btn-group-lg" href="~/api/Ticket">API - (/api/Ticke)</a>
+        <a class="btn btn-primary btn-group-lg" href="~/swagger">Swagger UI</a>
+        <a class="btn btn-default btn-group-lg" href="~/swagger/v1/swagger.json">swagger.json</a>
+    </div>    
+</div>

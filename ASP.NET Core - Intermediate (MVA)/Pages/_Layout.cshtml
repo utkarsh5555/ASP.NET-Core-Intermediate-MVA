@@ -40,16 +40,31 @@
                     }
                     else
                     {
-                        <li class="alert-danger">Policy Authorization In Effect (Manual)</li>
+                        <li> <span class="text-danger"> Policy Authorization In Effect (Manual)</span></li>
                     }
 
                     <li><a asp-page="/Contact">Contact</a></li>
-                </ul>
+                </ul>   
                 @await Html.PartialAsync("_LoginPartial")
             </div>
         </div>
     </nav>
     <div class="container body-content">
+        <div class="row">
+            <h3>Authorization With Policy</h3>
+            @if ((await AuthorizationService.AuthorizeAsync(User, "CanadiansOnly")).Succeeded)
+            {
+                <div class="alert alert-success">
+                    Policy Authorization Succeeded
+                </div>
+            }
+            else
+            {
+                <div class="alert alert-danger">
+                    Policy Authorization Failed
+                </div>
+            }
+        </div>
         @RenderBody()
         <hr />
         <footer>
